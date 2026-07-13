@@ -1,34 +1,40 @@
 import React, { useState } from 'react';
 
 const projects = [
-  {
-    id: 1,
-    title: "Fabric Sectional Clean",
-    description: "Complete removal of embedded pet hair and tough water stains.",
-    beforeImg: "images/sofa-before.jpg",
-    afterImg: "images/sofa-after.jpg"
-  },
-  {
-    id: 2,
-    title: "Area Rug Revitalization",
-    description: "Restored bright, original colors by removing high-traffic dirt.",
-    beforeImg: "images/rug-before.jpg",
-    afterImg: "images/rug-after.jpg"
-  },
-  {
-    id: 3,
-    title: "Stain Treatment",
-    description: "Deep steam extraction targeting tough spills and dark discolorations.",
-    beforeImg: "images/chair-before.jpg",
-    afterImg: "images/chair-after.jpg"
-  }
+    {
+        id: 1,
+        beforeAfterImg: "images/Photo1.jpg"
+    },
+        {
+        id: 2,
+        beforeAfterImg: "images/Photo2.jpg"
+    },
+        {
+        id: 3,
+        beforeAfterImg: "images/Photo3.jpg"
+    }
 ];
 
 const reviews = [
     {
-        quote: 'Andrew did an incredible job on our sectional — we have two dogs and the pet hair was out of control. He got it looking brand new. Highly recommend!',
+        quote: 'RTP Upholstery did a great job cleaning my couch! He was quick to respond, reliable, thorough, and required no extra materials. Highly recommend!',
+        name: 'Nina W.',
+        location: 'Raleigh, NC'
+    },
+    {
+        quote: 'RTP Upholstery did an awesome job for us. Super professional, on time, and really easy to work with. Our couch and rug look brand new. I honestly didn’t expect the results to be this good. Fair pricing, and you can tell they take pride in their work. Definitely recommending them to friends and family.',
+        name: 'Naser O.',
+        location: 'Garner, NC'
+    },
+    {
+        quote: 'Andrew did an incredible job on our sectional - we have two dogs and the pet hair was out of control. He got it looking brand new. Highly recommend!',
         name: 'Sarah M.',
         location: 'Cary, NC'
+    },
+    {
+        quote: 'RTP Upholstery did an excellent job on my sofas and chairs. Now they look like new. The work was completed quickly, to a high standard, and at a fair price. I highly recommend them and will definitely use their services again.',
+        name: 'Maksim K.',
+        location: 'Holly Springs, NC'
     },
     {
         quote: 'Super professional, on time, and our rug looks amazing. Fair pricing and great communication. Will definitely use again.',
@@ -39,7 +45,7 @@ const reviews = [
         quote: 'Used RTP Upholstery for a move-out clean on a rental property. Andrew was thorough, efficient, and the landlord was impressed. Saved my deposit!',
         name: 'Priya K.',
         location: 'Durham, NC'
-    }
+    },
 ];
 
 const Home: React.FC = () => {
@@ -95,18 +101,11 @@ const Home: React.FC = () => {
                     <div className="gallery-grid-3col">
                     {projects.map((project) => (
                         <div key={project.id} className="gallery-card">
-                        <div className="image-pair">
-                            <div className="img-wrapper">
-                            <img src={project.beforeImg} alt={`${project.title} before cleaning`} />
-                            <span className="badge before-badge">Before</span>
+                            <div className="image-pair">
+                                <div className="img-wrapper">
+                                    <img src={project.beforeAfterImg} alt={`Professional upholstery cleaning transformation project ${project.id} - Before and After`} />
+                                </div>
                             </div>
-                            <div className="img-wrapper">
-                            <img src={project.afterImg} alt={`${project.title} after deep clean`} />
-                            <span className="badge after-badge">After</span>
-                            </div>
-                        </div>
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
                         </div>
                     ))}
                     </div>
@@ -123,7 +122,11 @@ const Home: React.FC = () => {
                         {visibleReviews.map((review) => (
                             <article className="review-card active" key={review.name}>
                                 <div className="review-stars">★★★★★</div>
-                                <p className="review-quote">“{review.quote}”</p>
+                                <details className="review-quote-details">
+                                    <summary className="review-quote-summary" spellCheck="false">
+                                        “{review.quote}”
+                                    </summary>
+                                </details>
                                 <div className="review-author">
                                     <strong>{review.name}</strong>
                                     <span>{review.location}</span>

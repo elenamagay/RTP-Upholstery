@@ -1,12 +1,16 @@
 import React from 'react';
 
 const pricingRows = [
-    { service: 'Sofa', price: '$120 – $180' },
+    { service: 'Sofa', price: '$125 – $180' },
     { service: 'Sectional', price: '$180 – $260' },
     { service: 'Chair', price: '$40 – $70' },
-    { service: 'Area Rug', price: '$40 – $90' },
-    { service: 'Pet Hair Removal (Add-On)', price: '+$20 – $40' },
-    { service: 'Heavy Stain Treatment (Add-On)', price: '+$20 – $50' }
+    { service: 'Area Rug', price: '$60 – $220' },
+    { service: 'Optional Add-On Treatments:', isHeader: true },
+    { service: 'Pet Hair Removal (per seat)', price: '+$15' },
+    { service: 'Heavy Stain Treatment', price: '$20+' },
+    { service: 'Scotchgard Protection (per seat)', price: '+$15' },
+    { service: 'Fast Drying (per seat)', price: '+$20' },
+    { service: 'Fabric Pilling Removal (per seat)', price: '+$20' },
 ];
 
 const PriceList: React.FC = () => {
@@ -28,13 +32,24 @@ const PriceList: React.FC = () => {
                     </thead>
                     <tbody>
                         {pricingRows.map((row) => (
-                            <tr key={row.service}>
-                                <td>{row.service}</td>
-                                <td>{row.price}</td>
+                            <tr key={row.service} className={row.isHeader ? 'table-section-header' : ''}>
+                                {row.isHeader ? (
+                                    <td colSpan={2}>{row.service}</td>
+                                ) : (
+                                    <>
+                                        <td>{row.service}</td>
+                                        <td className="price-column">{row.price}</td>
+                                    </>
+                                )}
                             </tr>
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            <div className="pricing-note" spellCheck="false">
+                <p><strong>Bundle & Save</strong></p>
+                <p className="bundle-note">Refreshing more than one item? Bundle your Sofa or Sectional cleaning with an Area Rug or any of our add-on treatments to qualify for exclusive package pricing.                </p>
             </div>
 
             <div className="pricing-note">
